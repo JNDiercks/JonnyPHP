@@ -3,25 +3,30 @@ $servername = "localhost";
 $username = "root";
 $password = "mysqlpassword";
 
+// Create connection
 $conn = new mysqli($servername, $username, $password);
-
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$dbname = "JonathansTennisDb";
+// Create database
 $sql = "CREATE DATABASE if not exists JonathansTennisDb";
 if ($conn->query($sql) === TRUE) {
 } else {
     error_log("Error creating database: " . $conn->error);
 }
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$dbname = "JonathansTennisDb";
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// sql to create table
 $sql = "CREATE TABLE if not exists Logbook (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     writer VARCHAR(30) NOT NULL,
@@ -30,22 +35,27 @@ $sql = "CREATE TABLE if not exists Logbook (
     )";
 
 if ($conn->query($sql) === TRUE) {
+    echo "Table MyGuests created successfully";
 } else {
     echo "Error creating table: " . $conn->error;
 }
 
-$conn->close();
+$sqlLogbook = "SELECT id, write, text FROM Logbook";
+$result = $conn->query($sql);
+
+// $conn->close();
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Jonny's Tennisblog</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
-    <script src="./script.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="section-welcome section">
@@ -63,27 +73,45 @@ $conn->close();
                         </div>
                     </div>
                     <div class="sub-title-content">
-                        Lieblingsspieler, Spielberichte, Trainingstagebücher und mehr...
+                        Spielberichte, Trainingstagebücher, sexy Fußbilder und vieles mehr...
                     </div>
                 </content>
             </div>
         </div>
         <div class="section-league-game-reports section">
-            <div class="flex-center viewheight-full">
-                <button class="button button-lieblingsspieler" onclick="Lieblingsspielerseite()">Meine
-                    Lieblingsspieler</button>
-            </div>
         </div>
-        <div class="section-spielhistorie section">
+        <div class="section-training-reports section"></div>
+        <div class="section-tba1 section"></div>
+        <div class="section-tba2 section"></div>
+        <div class="section">
             <div class="flex-center viewheight-full">
-                <button class="button button-spielhistorie" onclick="Spielhistorie()">Meine Spielhistorie</button>
-            </div>
-        </div>
-        <div class="section-guestbook section">
-            <div class="flex-center viewheight-full">
-                <button class="button button-guestbook" onclick="Gästebuchseite()">Zum Gästebuch</button>
+                <div>
+                    <form action="guestbook.php" method="post">
+                        <p><label for="name">Name:</label></p>
+                        <input type="text" name="name">
+                        <p><label for="guestbook-text">Gästebuch:</label></p>
+                        <textarea id="guestbook-text" name="guestbook-text" rows="4" cols="50"></textarea>
+                        <br>
+                        <input type="submit">
+                    </form>
+                    <?php
+
+                    $sql = "SELECT writer, text FROM Logbook";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<div>Hallo von: " . $row["writer"] . " - Text: " . $row["text"] . "</div>";
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

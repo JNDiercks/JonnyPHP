@@ -1,8 +1,21 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: gray;
+    background-color: white;
     font-family: Georgia, serif;
+}
+
+.button-startseite {
+    background: #DEB841;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    border-radius: 4px;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 p {
@@ -26,28 +39,23 @@ p {
 }
 
 .section-welcome {
-    background-color: #ffbd17;
-    color: white;
+    background-color: #CCC9DC;
+    color: black;
 }
 .section-league-game-reports {
-    background: url(https://img.abendblatt.de/img/sport/crop214055041/267780107-w1200-cv4_3-q85/img-3838-db484fcc-389c-4b47-9e4a-db006e3955f7.jpg);
-    background-size:  cover;
+    background: #9D9AA9;
 }
-.section-training-reports {
-    background: url(/data/images/20191024_180656.jpg);
-    background-size:  cover;
+
+.body-spielhistorie {
+    background: #9D9AA9;
 }
-.section-tba1 {
-    background: url(https://img.pr0gramm.com/2023/07/23/8804be74c1bd4510.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+
+.section-guestbook {
+    background: #7C746F;
 }
-.section-tba2 {
-    background: url(https://preview.redd.it/i15lyev5soab1.jpg?width=640&crop=smart&auto=webp&s=8242c47fa1c0e66ca8b77d44afc8b54cf22b6493);
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: center;
+
+.section-spielhistorie {
+    background: #6D6A75;
 }
 
 .flex-center {
@@ -83,4 +91,156 @@ p {
     -webkit-transform: rotateZ(720deg);
     -moz-transform: rotateZ(720deg);
     transform: rotateZ(720deg);
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    min-width: 400px;
+    width:20%;
+    margin: 10px;
+    border-radius: 5px;
+    background: white;
+  }
+  
+  .card-img {
+    border-radius: 5px 5px 0 0;
+    height: 300px;
+    width: 200px;
+    object-fit: fill;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .card-container {
+    padding: 2px 16px;
+  }
+
+.button {
+    border-radius: 4px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.button-lieblingsspieler {
+    background-color: #6e6c78;
+    border: 5px solid #434246;
+}
+
+.lieblingsspieler-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-guestbook {
+    background-color: #58534f;
+    border: 5px solid #373331;
+}
+
+.button-spielhistorie {
+    background-color: #514f57;
+    border: 5px solid #36353a;
+}
+
+.body-neuer-eintrag {
+    background: #7C746F;
+}
+
+textarea,input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.button-neuer-eintrag {
+    background: #4a4850;
+    border: 2px solid #353331;
+}
+
+.gästebuch-form {  
+    background: #a99e97;
+    border: 2px solid #554e4a;
+    border-radius: 8px;
+    font-size: larger;
+    min-width: fit-content;
+    max-width: 50%;
+    margin-top: 50px;
+    padding: 30px;
+}
+
+.body-gästebuch{
+    background: #7C746F;
+    margin: 0 20px;
+}
+
+.gästebuch-einträge {
+    margin-top: 20px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.gästebuch-eintrag {
+    color: black;
+    background-color: #c6c1d3;
+    border: 2px solid #4a4850;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: larger;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.gästebuch-kopf {
+    text-decoration: underline;
+}
+
+.gästebuch-text {
+    max-width: 100%;
+    word-break:break-all;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid;
+  }
+  
+  td, th {
+    border: 1px solid #928787;
+    text-align: left;
+    padding: 8px;
+  }
+
+  thead tr {
+    background-color: #aba7a7;
+  }
+  
+  tr {
+    background-color: #dddddd;
+  }
+
+.spielhistorie-tabelle {
+    margin-top: 50px;
+    margin-right: 200px;
+    margin-left: 200px;
+}
+
+.body-lieblingsspieler {
+    width: 100%;
+    background: #9D9AA9;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 700;
 }
